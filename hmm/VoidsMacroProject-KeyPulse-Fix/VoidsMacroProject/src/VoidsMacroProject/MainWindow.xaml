@@ -1,0 +1,225 @@
+<Window x:Class="VoidsMacroProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Voids Macro Project" Height="880" Width="1420"
+        MinHeight="760" MinWidth="1120"
+        WindowStartupLocation="CenterScreen"
+        Background="#0B0D12" Foreground="#EEF2FA"
+        FontFamily="Segoe UI" FontSize="13"
+        Closing="Window_Closing">
+  <Window.Resources>
+    <Style TargetType="Button">
+      <Setter Property="Foreground" Value="#E9EDF7" />
+      <Setter Property="Background" Value="#1A2030" />
+      <Setter Property="BorderBrush" Value="#30394B" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="Padding" Value="10,7" />
+      <Setter Property="Margin" Value="3" />
+      <Setter Property="Cursor" Value="Hand" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="7" Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="ButtonBorder" Property="Background" Value="#252D40" />
+                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#58637B" />
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="ButtonBorder" Property="Background" Value="#343E55" />
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.45" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style TargetType="TextBox">
+      <Setter Property="Foreground" Value="#EEF2FA" />
+      <Setter Property="Background" Value="#0D111A" />
+      <Setter Property="BorderBrush" Value="#30394B" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="Padding" Value="8,6" />
+      <Setter Property="CaretBrush" Value="#FFFFFF" />
+    </Style>
+    <Style TargetType="ComboBox">
+      <Setter Property="Foreground" Value="#EEF2FA" />
+      <Setter Property="Background" Value="#0D111A" />
+      <Setter Property="BorderBrush" Value="#30394B" />
+      <Setter Property="Padding" Value="6" />
+      <Setter Property="Margin" Value="0,4,0,4" />
+    </Style>
+    <Style TargetType="CheckBox">
+      <Setter Property="Foreground" Value="#DCE3F1" />
+      <Setter Property="Margin" Value="0,5,0,5" />
+    </Style>
+    <Style TargetType="ListBox">
+      <Setter Property="Foreground" Value="#E9EDF7" />
+      <Setter Property="Background" Value="#0D111A" />
+      <Setter Property="BorderBrush" Value="#30394B" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="Padding" Value="4" />
+    </Style>
+    <Style TargetType="ListBoxItem">
+      <Setter Property="Padding" Value="8,7" />
+      <Setter Property="Margin" Value="1" />
+      <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="ListBoxItem">
+            <Border x:Name="ItemBorder" Background="Transparent" CornerRadius="5" Padding="{TemplateBinding Padding}">
+              <ContentPresenter />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsSelected" Value="True">
+                <Setter TargetName="ItemBorder" Property="Background" Value="#30264F" />
+              </Trigger>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="ItemBorder" Property="Background" Value="#20283A" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+
+  <Grid Margin="18">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Border Grid.Row="0" Background="#111622" BorderBrush="#252C3A" BorderThickness="1" CornerRadius="13" Padding="18" Margin="0,0,0,12">
+      <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+          <TextBlock x:Name="EngineStatusText" Text="MACRO DISABLED" Foreground="#A8B1C3" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0" />
+          <Button x:Name="ToggleMacroButton" Content="Enable Macro" Background="#5B3CB2" BorderBrush="#7959D6" MinWidth="135" Click="ToggleMacroButton_Click" />
+        </StackPanel>
+        <StackPanel>
+          <TextBlock Text="VOIDS MACRO PROJECT" FontSize="23" FontWeight="Bold" Foreground="#F5F7FC" />
+          <TextBlock Text="Windows 11 · Four presets · Hold-to-repeat input" Foreground="#9DA8BC" Margin="0,3,0,0" />
+        </StackPanel>
+      </DockPanel>
+    </Border>
+
+    <Border Grid.Row="1" Background="#171B2A" BorderBrush="#2B3042" BorderThickness="1" CornerRadius="9" Padding="10,8" Margin="0,0,0,12">
+      <DockPanel>
+        <TextBlock x:Name="ActivePresetStatusText" Text="Active preset: 1 — Fighting Style" FontWeight="SemiBold" VerticalAlignment="Center" />
+        <TextBlock DockPanel.Dock="Right" Text="1 / 2 / 3 / 4 switch presets globally" Foreground="#9DA8BC" VerticalAlignment="Center" />
+      </DockPanel>
+    </Border>
+
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="250" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="330" />
+      </Grid.ColumnDefinitions>
+
+      <!-- PRESET AND CONFIGURATION PANEL -->
+      <Border Grid.Column="0" Background="#111622" BorderBrush="#252C3A" BorderThickness="1" CornerRadius="12" Padding="13" Margin="0,0,12,0">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <StackPanel>
+            <TextBlock Text="PRESETS" FontSize="12" FontWeight="Bold" Foreground="#9DA8BC" Margin="2,0,0,8" />
+            <Button x:Name="Preset1Button" Content="1  ·  Fighting Style" Tag="1" Click="PresetButton_Click" HorizontalContentAlignment="Left" />
+            <Button x:Name="Preset2Button" Content="2  ·  Fruit" Tag="2" Click="PresetButton_Click" HorizontalContentAlignment="Left" />
+            <Button x:Name="Preset3Button" Content="3  ·  Sword" Tag="3" Click="PresetButton_Click" HorizontalContentAlignment="Left" />
+            <Button x:Name="Preset4Button" Content="4  ·  Gun" Tag="4" Click="PresetButton_Click" HorizontalContentAlignment="Left" />
+            <Separator Margin="0,14,0,12" Background="#30394B" />
+            <TextBlock Text="SELECTED PRESET NAME" Foreground="#9DA8BC" FontSize="11" FontWeight="Bold" />
+            <TextBox x:Name="PresetNameBox" Margin="0,6,0,4" MaxLength="32" LostKeyboardFocus="PresetNameBox_LostKeyboardFocus" />
+            <TextBlock Text="GLOBAL DEFAULT INTERVAL" Foreground="#9DA8BC" FontSize="11" FontWeight="Bold" Margin="0,17,0,2" />
+            <DockPanel Margin="0,2,0,0">
+              <TextBox x:Name="GlobalIntervalBox" Width="70" Text="100" HorizontalContentAlignment="Right" LostKeyboardFocus="GlobalIntervalBox_LostKeyboardFocus" />
+              <TextBlock Text="ms" Foreground="#9DA8BC" VerticalAlignment="Center" Margin="7,0,0,0" />
+            </DockPanel>
+            <Slider x:Name="GlobalIntervalSlider" Minimum="10" Maximum="2000" Value="100" TickFrequency="10" IsSnapToTickEnabled="False" ValueChanged="GlobalIntervalSlider_ValueChanged" Margin="0,8,0,4" />
+            <TextBlock Text="Used by keys without a custom interval. Lower values attempt faster repetition." TextWrapping="Wrap" Foreground="#8895AA" FontSize="11" Margin="0,2,0,4" />
+            <Separator Margin="0,13,0,12" Background="#30394B" />
+            <TextBlock Text="CONFIGURATION" Foreground="#9DA8BC" FontSize="11" FontWeight="Bold" />
+            <Button Content="Save Settings" Click="SaveButton_Click" HorizontalContentAlignment="Center" />
+            <Button Content="Export JSON…" Click="ExportButton_Click" HorizontalContentAlignment="Center" />
+            <Button Content="Import JSON…" Click="ImportButton_Click" HorizontalContentAlignment="Center" />
+            <TextBlock Text="Settings are also saved automatically." Foreground="#8895AA" FontSize="11" TextWrapping="Wrap" Margin="4,6,4,2" />
+          </StackPanel>
+        </ScrollViewer>
+      </Border>
+
+      <!-- VISUAL KEYBOARD -->
+      <Border Grid.Column="1" Background="#111622" BorderBrush="#252C3A" BorderThickness="1" CornerRadius="12" Padding="14" Margin="0,0,12,0">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+          <StackPanel>
+            <DockPanel Margin="0,0,0,3">
+              <TextBlock Text="VISUAL KEYBOARD" FontSize="12" FontWeight="Bold" Foreground="#9DA8BC" />
+              <TextBlock DockPanel.Dock="Right" Text="Click a key to toggle it in the active preset" FontSize="11" Foreground="#8895AA" />
+            </DockPanel>
+            <TextBlock Text="Purple keys are enabled for this preset." Foreground="#8895AA" FontSize="11" Margin="0,0,0,9" />
+            <StackPanel x:Name="KeyboardRowsPanel" />
+            <Separator Margin="0,15,0,12" Background="#30394B" />
+            <TextBlock Text="MOUSE INPUTS" FontSize="12" FontWeight="Bold" Foreground="#9DA8BC" Margin="0,0,0,5" />
+            <WrapPanel x:Name="MouseButtonsPanel" />
+            <Separator Margin="0,15,0,12" Background="#30394B" />
+            <TextBlock Text="HOW IT WORKS" FontSize="12" FontWeight="Bold" Foreground="#9DA8BC" Margin="0,0,0,5" />
+            <TextBlock TextWrapping="Wrap" Foreground="#AAB4C6" FontSize="12" Text="A configured key repeats only while you physically hold it. Selecting a preset never fires its actions. Switching presets stops existing repeats; release and press a key again to start it under the new preset. Physical keys still pass through normally." />
+          </StackPanel>
+        </ScrollViewer>
+      </Border>
+
+      <!-- ASSIGNED KEYS AND TIMING -->
+      <Border Grid.Column="2" Background="#111622" BorderBrush="#252C3A" BorderThickness="1" CornerRadius="12" Padding="13">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <DockPanel Grid.Row="0" Margin="0,0,0,9">
+            <TextBlock Text="ASSIGNED KEYS" FontSize="12" FontWeight="Bold" Foreground="#9DA8BC" />
+            <TextBlock x:Name="AssignedCountText" DockPanel.Dock="Right" Text="0 keys" FontSize="11" Foreground="#8895AA" />
+          </DockPanel>
+          <ListBox x:Name="AssignedKeysList" Grid.Row="1" SelectionChanged="AssignedKeysList_SelectionChanged" />
+          <StackPanel Grid.Row="2" Margin="0,10,0,5">
+            <TextBlock Text="ADD A KEY" Foreground="#9DA8BC" FontSize="11" FontWeight="Bold" />
+            <DockPanel>
+              <Button x:Name="AddKeyButton" DockPanel.Dock="Right" Content="Add" Click="AddKeyButton_Click" MinWidth="60" />
+              <ComboBox x:Name="KeySelectorCombo" />
+            </DockPanel>
+            <Button x:Name="RemoveKeyButton" Content="Remove Selected Key" Click="RemoveKeyButton_Click" HorizontalContentAlignment="Center" />
+          </StackPanel>
+          <Border Grid.Row="3" Background="#0D111A" BorderBrush="#252C3A" BorderThickness="1" CornerRadius="8" Padding="10" Margin="0,8,0,0">
+            <StackPanel>
+              <TextBlock Text="SELECTED KEY TIMING" Foreground="#9DA8BC" FontSize="11" FontWeight="Bold" />
+              <TextBlock x:Name="SelectedKeyTitle" Text="Select a key above" FontSize="17" FontWeight="SemiBold" Margin="0,6,0,4" />
+              <CheckBox x:Name="UseCustomIntervalCheckBox" Content="Use a custom interval for this key" IsEnabled="False" Checked="UseCustomIntervalCheckBox_Changed" Unchecked="UseCustomIntervalCheckBox_Changed" />
+              <DockPanel Margin="0,3,0,0">
+                <TextBox x:Name="CustomIntervalBox" Width="70" Text="100" HorizontalContentAlignment="Right" IsEnabled="False" LostKeyboardFocus="CustomIntervalBox_LostKeyboardFocus" />
+                <TextBlock Text="ms" Foreground="#9DA8BC" VerticalAlignment="Center" Margin="7,0,0,0" />
+                <TextBlock x:Name="IntervalSourceText" Text="Using global default" Foreground="#9DA8BC" VerticalAlignment="Center" Margin="8,0,0,0" />
+              </DockPanel>
+              <Slider x:Name="CustomIntervalSlider" Minimum="10" Maximum="2000" Value="100" IsEnabled="False" ValueChanged="CustomIntervalSlider_ValueChanged" Margin="0,8,0,2" />
+              <TextBlock Text="Range: 10–2000 ms. Changes take effect on the next repeat interval." TextWrapping="Wrap" Foreground="#8895AA" FontSize="11" Margin="0,4,0,0" />
+            </StackPanel>
+          </Border>
+          <TextBlock Grid.Row="4" Text="When enabled, keys 1–4 switch presets. They are reserved and are not repeated as macro inputs." Foreground="#8895AA" FontSize="11" TextWrapping="Wrap" Margin="2,9,2,0" />
+        </Grid>
+      </Border>
+    </Grid>
+
+    <DockPanel Grid.Row="3" Margin="2,12,2,0">
+      <TextBlock x:Name="FooterStatusText" Text="Ready. Macro repetition is disabled until you enable it." Foreground="#8793A8" VerticalAlignment="Center" />
+      <TextBlock DockPanel.Dock="Right" Text="LOCAL INPUT AUTOMATION" Foreground="#66748D" FontSize="10" VerticalAlignment="Center" />
+    </DockPanel>
+  </Grid>
+</Window>

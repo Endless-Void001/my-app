@@ -1,0 +1,14 @@
+<Application x:Class="VoidsMacroProject.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+  <Application.Resources>
+    <SolidColorBrush x:Key="AppBackground" Color="#0B0D12" />
+    <SolidColorBrush x:Key="PanelBackground" Color="#121722" />
+    <SolidColorBrush x:Key="PanelBorder" Color="#252C3A" />
+    <SolidColorBrush x:Key="TextPrimary" Color="#EEF2FA" />
+    <SolidColorBrush x:Key="TextMuted" Color="#97A3B8" />
+    <SolidColorBrush x:Key="Accent" Color="#8B5CF6" />
+    <SolidColorBrush x:Key="AccentSoft" Color="#282143" />
+  </Application.Resources>
+</Application>
